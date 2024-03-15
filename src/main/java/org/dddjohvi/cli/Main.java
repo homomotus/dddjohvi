@@ -1,4 +1,4 @@
-package org.dddjohvi;
+package org.dddjohvi.cli;
 
 public class Main {
   public static void main(String[] args) {
