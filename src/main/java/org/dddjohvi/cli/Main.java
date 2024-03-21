@@ -15,9 +15,8 @@ public class Main {
     scanner = new Scanner(System.in);
     Exam exam = init();
     while (true) {
-      String fullName = ask("Type your full name:");
-      String emailInput = ask("Type your email:");
-      Applicant applicant = new Applicant(fullName, new Email(emailInput));
+
+      Applicant applicant = askApplicant();
       List<SubmittedAnswer> submittedAnswers = new ArrayList<>();
       for (Question question : exam.questions()) {
         String answerInput = ask(question.question());
@@ -26,6 +25,18 @@ public class Main {
       exam.submit(applicant, submittedAnswers);
       System.out.println("Current top is:");
       System.out.println(exam.top());
+    }
+  }
+
+  private static Applicant askApplicant() {
+    while (true) {
+      try {
+        String fullName = ask("Type your full name:");
+        String emailInput = ask("Type your email:");
+        return new Applicant(fullName, new Email(emailInput));
+      } catch (Exception e) {
+        System.out.println(e.getClass().getSimpleName());
+      }
     }
   }
 
