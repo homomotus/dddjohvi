@@ -2,28 +2,25 @@ package org.dddjohvi.cli;
 
 import org.dddjohvi.*;
 
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
+  private static Scanner scanner;
+
   public static void main(String[] args) {
     System.out.println("");
-    Scanner scanner = new Scanner(System.in);
+    scanner = new Scanner(System.in);
     Exam exam = init();
     while (true) {
-      System.out.println("Type your full name:");
-      String fullName = scanner.nextLine();
-      System.out.println("Type your email:");
-      String emailInput = scanner.nextLine();
+      String fullName = ask("Type your full name:");
+      String emailInput = ask("Type your email:");
       Applicant applicant = new Applicant(fullName, new Email(emailInput));
       List<SubmittedAnswer> submittedAnswers = new ArrayList<>();
       for (Question question : exam.questions()) {
-        System.out.println(question.question());
-        System.out.println("Type your answer:");
-        String answerInput = scanner.nextLine();
+        String answerInput = ask(question.question());
         submittedAnswers.add(new SubmittedAnswer(question, new Answer(answerInput)));
       }
       exam.submit(applicant, submittedAnswers);
@@ -31,6 +28,12 @@ public class Main {
       System.out.println(exam.top());
     }
   }
+
+  private static String ask(String message) {
+    System.out.println(message);
+    return scanner.nextLine();
+  }
+
   private static Exam init() {
     Question question1 = new Question("How much 2x2?");
     ExamQuestion examQuestion1 = new ExamQuestion(question1, new Answer("4"));
