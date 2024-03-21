@@ -7,10 +7,10 @@ public final class Email {
 
   public Email(String email) {
     if (email == null || email.isBlank()) {
-      throw new EmailIsMissingException();
+      throw new IllegalArgumentException("Empty");
     }
     if (!email.contains("@")) {
-      throw new InvalidEmailException();
+      throw new IllegalArgumentException("No @");
     }
     this.email = email;
   }
@@ -37,5 +37,4 @@ public final class Email {
     return "Email[" +
         "email=" + email + ']';
   }
-
 }

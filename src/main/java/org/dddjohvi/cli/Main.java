@@ -11,11 +11,9 @@ public class Main {
   private static Scanner scanner;
 
   public static void main(String[] args) {
-    System.out.println("");
     scanner = new Scanner(System.in);
     Exam exam = init();
     while (true) {
-
       Applicant applicant = askApplicant();
       List<SubmittedAnswer> submittedAnswers = new ArrayList<>();
       for (Question question : exam.questions()) {
