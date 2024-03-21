@@ -33,7 +33,7 @@ public class Main {
       try {
         String fullName = ask("Type your full name:");
         String emailInput = ask("Type your email:");
-        return new Applicant(fullName, new Email(emailInput));
+        return new Applicant(new FullName(fullName), new Email(emailInput));
       } catch (Exception e) {
         System.out.println(e.getClass().getSimpleName());
       }

@@ -1,4 +1,4 @@
 package org.dddjohvi;
 
-public record Applicant(String fullName, Email email) {
+public record Applicant(FullName fullName, Email email) {
 }

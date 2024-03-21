@@ -15,8 +15,8 @@ public class ExamTest {
     ExamQuestion examQuestion2 = new ExamQuestion(question2, new Answer("London"));
 
     Exam exam = new Exam(List.of(examQuestion1, examQuestion2));
-    Applicant john = new Applicant("John", new Email("john@mail.com"));
-    Applicant bob = new Applicant("Bob", new Email("bob@email.com"));
+    Applicant john = new Applicant(new FullName("John"), new Email("john@mail.com"));
+    Applicant bob = new Applicant(new FullName("Bob"), new Email("bob@email.com"));
     ExamResult bobResult = exam.submit(bob, List.of(
         new SubmittedAnswer(question1, new Answer("5")),
         new SubmittedAnswer(question2, new Answer("London"))
